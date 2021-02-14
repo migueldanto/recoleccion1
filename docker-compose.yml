@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+    db:
+        image: postgis/postgis:12-3.0-alpine
+        container_name: "dbrecoleccion1"
+        ports:
+            - "5430:5432"
+        networks:
+            - backendrecoleccion    
+        env_file: 
+            - ".env"
+        volumes: 
+            - recoleccion-db-v:/var/lib/postgresql/data
+    django:
+        build: .
+        command: gunicorn backend_app.wsgi:application --bind 0.0.0.0:8000 
+        depends_on:
+            - db
+        container_name: "djangorecoleccion1"
+        volumes:
+            - recoleccion-django-v:/app/
+        expose:
+            - 8000
+        env_file: 
+            - .env"
+        networks: 
+            - backendrecoleccion
+    nginx:
+        build: ./nginx
+        ports:
+            - 80:80
+            - 443:80
+        depends_on:
+            - django
+        networks: 
+            - backendrecoleccion
+
+volumes:
+    recoleccion-django-v:
+    recoleccion-db-v:
+
+networks:
+    backendrecoleccion:
