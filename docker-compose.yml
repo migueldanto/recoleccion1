@@ -23,7 +23,7 @@ services:
         expose:
             - 8000
         env_file: 
-            - .env"
+            - ".env"
         networks: 
             - backendrecoleccion
     nginx:
