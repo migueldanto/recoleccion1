@@ -12,7 +12,7 @@
 #fi
 
 #python manage.py flush --no-input
-python manage.py makemigrations
+python manage.py makemigrations administracion
 python manage.py migrate
 #crear un superusuario aqui 
 python manage.py g_superuser

@@ -18,4 +18,4 @@ COPY . .
 
 COPY ./entrypoint.sh .
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["sh","/app/entrypoint.sh"]
