@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import  url
+
+from django.conf import settings
+import django.views.static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+estaticos= [url(r'^static/(?P<path>.*)$', django.views.static.serve, {'document_root': settings.STATIC_ROOT, 'show_indexes': settings.DEBUG})]
+
+urlpatterns += estaticos

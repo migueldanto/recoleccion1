@@ -19,7 +19,7 @@ drop database recoleccion1;
 en django
 
 ```bash 
-export $(cat .env | xargs)
+export $(cat .env-dev | xargs)
 
 python manage.py makemigrations
 python manage.py migrate

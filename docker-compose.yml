@@ -14,7 +14,7 @@ services:
             - recoleccion-db-v:/var/lib/postgresql/data
     django:
         build: .
-        command: gunicorn recoleccion1.wsgi:application --bind 0.0.0.0:8000 
+        command: gunicorn recoleccion1.wsgi:application --bind 0.0.0.0:8000
         depends_on:
             - db
         container_name: "djangorecoleccion1"

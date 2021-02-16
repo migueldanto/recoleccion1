@@ -19,5 +19,6 @@ python manage.py g_superuser
 #creando los datos random
 python manage.py g_random1
 
+python manage.py collectstatic
 
 exec "$@"
